@@ -1,24 +1,39 @@
-# Compiled class file
+# Maven / Micronaut build output
+target/
+out/
 *.class
 
-# Log file
-*.log
+# Java IDEs
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.factorypath
+.vscode/
 
-# BlueJ files
-*.ctxt
+# Editor temp files
+*.swp
+*.swo
+*~
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# JVM crash logs
 hs_err_pid*
 replay_pid*
+
+# Local logs
+*.log
+
+# Embedded Python module cache files
+__pycache__/
+*.py[cod]
+
+# macOS Finder metadata
+.DS_Store
+
+# Keep the wrapper bootstrap jar out of version control.
+# ./mvnw will download it on first use.
+.mvn/wrapper/maven-wrapper.jar
+
+# Unlike the stock Java template, do not ignore *.jar or *.zip:
+# this repo intentionally keeps demo artifacts under _success/.
