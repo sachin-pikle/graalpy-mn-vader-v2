@@ -8,7 +8,7 @@ The sample uses Micronaut's injected `@GraalPyModule` pattern rather than manual
 
 ## Current Sample
 
-- Micronaut 4.10.10
+- Micronaut 4.10.11
 - Java 21 bytecode
 - Preferred local runtime: `sdk use java 23-graal`
 - GraalPy build tooling via `graalpy-maven-plugin` 24.2.1
@@ -110,7 +110,7 @@ See the GraalPy virtual filesystem, Python module, and installed Python packages
 ## Main Differences From v1
 
 - `v2` uses `io.micronaut.graal-languages:micronaut-graalpy` and an injected `@GraalPyModule` interface; `v1` uses direct GraalPy embedding with `GraalPyResources` plus explicit `org.graalvm.python:python` and `org.graalvm.python:python-embedding`.
-- `v2` runs on Micronaut 4.10.10, Java 21 bytecode, `sdk use java 23-graal`, and GraalPy 24.2.1; `v1` runs on Micronaut 4.10.11, Java 25 bytecode, `sdk use java 25.0.2-graal`, and GraalPy 25.0.2.
+- `v2` runs on Micronaut 4.10.11, Java 21 bytecode, `sdk use java 23-graal`, and GraalPy 24.2.1; `v1` runs on Micronaut 4.10.11, Java 25 bytecode, `sdk use java 25.0.2-graal`, and GraalPy 25.0.2.
 - `v2` keeps the Python module under `src/main/resources/org.graalvm.python.vfs/src/sentiment_app.py`; `v1` keeps it at `src/main/resources/python/sentiment_app.py`.
 - `v2` calls the Python function through the injected `SentimentModule` and keeps `src/main/resources/META-INF/native-image/proxy-config.json` aligned with that interface; `v1` manually evaluates the script, reads the function from Python bindings, and does not need proxy metadata.
 
