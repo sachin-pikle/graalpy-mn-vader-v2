@@ -5,6 +5,7 @@ Keep this repo aligned with the current sample: a very small Micronaut app that 
 # Current Sample Snapshot
 
 - Artifact and app name: `graalpy-mn-vader-v2`
+- Version label: `v2`
 - Framework: Micronaut 4.10.10
 - Java target: 21
 - Preferred local runtime: `sdk use java 23-graal`
@@ -76,6 +77,10 @@ sdk use java 23-graal
 ./mvnw mn:run
 ```
 
+Open `http://localhost:8080`.
+
+The first build needs network access so Maven and GraalPy can resolve dependencies and install the pinned VADER package.
+
 Native image:
 
 ```bash
@@ -110,10 +115,14 @@ Inspect executable jar in JD-GUI:
 java -jar jd-gui-1.6.6.jar
 ```
 
-Then open `target/graalpy-mn-vader-v2-0.1.jar` and inspect:
+When JD-GUI opens, open `target/graalpy-mn-vader-v2-0.1.jar`.
+
+Look for these paths inside the jar:
 
 - `org.graalvm.python.vfs/src/sentiment_app.py`
 - `org.graalvm.python.vfs/venv/`
+
+See the GraalPy virtual filesystem, Python module, and installed Python packages packaged into the executable jar.
 
 # Success Criteria
 
