@@ -1,4 +1,4 @@
-# GraalPy + Micronaut + VADER Sentiment Demo
+# Demo: Sentiment Analysis with VADER, GraalPy and Micronaut
 
 <small>version: v2</small>
 
