@@ -18,7 +18,7 @@
     <jdk.version>25</jdk.version>
     <release.version>25</release.version>
     <micronaut.version>5.0.0-SNAPSHOT</micronaut.version>
-    <graalpy.plugin.version>24.2.1</graalpy.plugin.version>
+    <graalpy.plugin.version>25.0.2</graalpy.plugin.version>
     <micronaut.runtime>netty</micronaut.runtime>
     <exec.mainClass>graalpy.demo.Application</exec.mainClass>
   </properties>
