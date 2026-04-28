@@ -71,6 +71,9 @@
         <artifactId>micronaut-maven-plugin</artifactId>
         <configuration>
           <configFile>aot-${packaging}.properties</configFile>
+          <configurationValidation>
+            <enabled>false</enabled>
+          </configurationValidation>
         </configuration>
       </plugin>
       <plugin>
