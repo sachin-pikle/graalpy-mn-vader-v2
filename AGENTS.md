@@ -6,10 +6,10 @@ Keep this repo aligned with the current sample: a very small Micronaut app that 
 
 - Artifact and app name: `graalpy-mn-vader-v2`
 - Version label: `v2`
-- Framework: Micronaut 4.10.11
-- Java target: 21
-- Preferred local runtime: `sdk use java 23-graal`
-- GraalPy build tooling: `graalpy-maven-plugin` 24.2.1
+- Framework: Micronaut 5.0.0-SNAPSHOT
+- Java target: 25
+- Preferred local runtime: `sdk use java 25.0.2-graal`
+- GraalPy build tooling: `graalpy-maven-plugin` 25.0.2
 - Micronaut GraalPy integration: `io.micronaut.graal-languages:micronaut-graalpy`
 - Python package: `vaderSentiment==3.3.2`
 - UI shape: one static page with upload, preview, sentiment card, raw JSON, and a clear button
@@ -43,7 +43,7 @@ Keep this repo aligned with the current sample: a very small Micronaut app that 
 - Keep the UI minimal and back-of-room readable. Small visual cues like an emoji are fine when they improve a live demo.
 - Keep sample content original, short, safe for a public conference setting, and easy to read aloud.
 - Do not add benchmark, load-test, multi-step orchestration, or unrelated demo paths to this repo.
-- Do not move to GraalPy 25.x unless the Micronaut integration and runtime stack are upgraded together.
+- Keep Micronaut, GraalVM, GraalPy, and Java bytecode versions aligned when making runtime upgrades.
 
 # Current Code Map
 
@@ -66,7 +66,7 @@ Keep this repo aligned with the current sample: a very small Micronaut app that 
 # Run Commands
 
 ```bash
-sdk use java 23-graal
+sdk use java 25.0.2-graal
 ```
 
 ```bash
@@ -79,26 +79,12 @@ sdk use java 23-graal
 
 Open `http://localhost:8080`.
 
-The first build needs network access so Maven and GraalPy can resolve dependencies and install the pinned VADER package.
-
-Native image:
-
-```bash
-sdk use java 23-graal
-```
-
-```bash
-./mvnw package -Dpackaging=native-image
-```
-
-```bash
-./target/graalpy-mn-vader-v2
-```
+The first build needs network access so Maven and GraalPy can resolve dependencies, install the pinned VADER package, and resolve Micronaut 5 snapshot artifacts from the configured snapshot repository.
 
 Executable jar:
 
 ```bash
-sdk use java 23-graal
+sdk use java 25.0.2-graal
 ```
 
 ```bash
@@ -122,7 +108,21 @@ Look for these paths inside the jar:
 - `org.graalvm.python.vfs/src/sentiment_app.py`
 - `org.graalvm.python.vfs/venv/`
 
-See the GraalPy virtual filesystem, Python module, and installed Python packages packaged into the executable jar.
+See the bundled Python module, embedded GraalPy virtual filesystem, and installed Python packages packaged into the executable jar.
+
+Native image:
+
+```bash
+sdk use java 25.0.2-graal
+```
+
+```bash
+./mvnw package -Dpackaging=native-image
+```
+
+```bash
+./target/graalpy-mn-vader-v2
+```
 
 # Success Criteria
 
