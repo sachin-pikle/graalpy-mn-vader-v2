@@ -10,20 +10,33 @@
   <parent>
     <groupId>io.micronaut.platform</groupId>
     <artifactId>micronaut-parent</artifactId>
-    <version>4.10.11</version>
+    <version>5.0.0-SNAPSHOT</version>
   </parent>
 
   <properties>
     <packaging>jar</packaging>
-    <jdk.version>21</jdk.version>
-    <release.version>21</release.version>
-    <micronaut.version>4.10.11</micronaut.version>
-    <graalpy.plugin.version>24.2.1</graalpy.plugin.version>
+    <jdk.version>25</jdk.version>
+    <release.version>25</release.version>
+    <!-- <micronaut-maven-plugin.version>5.0.0-M2</micronaut-maven-plugin.version> -->
+    <micronaut.version>5.0.0-SNAPSHOT</micronaut.version>
+    <graalpy.plugin.version>25.0.2</graalpy.plugin.version>
     <micronaut.runtime>netty</micronaut.runtime>
     <exec.mainClass>graalpy.demo.Application</exec.mainClass>
   </properties>
 
   <repositories>
+
+    <repository>
+      <id>central-sonatype-snapshots</id>
+      <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+    </repository>
+
     <repository>
       <id>central</id>
       <url>https://repo.maven.apache.org/maven2</url>
@@ -71,6 +84,9 @@
         <artifactId>micronaut-maven-plugin</artifactId>
         <configuration>
           <configFile>aot-${packaging}.properties</configFile>
+          <configurationValidation>
+            <enabled>false</enabled>
+          </configurationValidation>
         </configuration>
       </plugin>
       <plugin>
@@ -96,6 +112,46 @@
         </executions>
       </plugin>
       <!-- end::graalpy-maven-plugin[] -->
+      <!-- GraalVM Embedding Uber-JAR Shade Plugin -->
+      <!-- Added to fix java.lang.InternalError: Truffle could not be initialized because Multi-Release classes are not configured correctly.-->
+      <!-- This most likely means Truffle classes have been repackaged incorrectly and the `Multi-Release: true` attribute in META-INF/MANIFEST.MF has been lost. -->
+      <!-- A common cause of this error is invalid Uber JAR configuration. -->
+      <!-- For more information see: https://www.graalvm.org/latest/reference-manual/embed-languages/#uber-jar-file-creation -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.6.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>${exec.mainClass}</mainClass>
+                  <manifestEntries>
+                    <Multi-Release>true</Multi-Release>
+                  </manifestEntries>
+                </transformer>
+              </transformers>
+              <filters>
+                <filter>
+                  <artifact>*:*:*:*</artifact>
+                  <excludes>
+                    <exclude>META-INF/*.SF</exclude>
+                    <exclude>META-INF/*.DSA</exclude>
+                    <exclude>META-INF/*.RSA</exclude>
+                  </excludes>
+                </filter>
+              </filters>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- end: GraalVM Embedding Uber-JAR Shade Plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
