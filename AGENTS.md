@@ -8,8 +8,8 @@ Keep this repo aligned with the current sample: a very small Micronaut app that 
 - Version label: `v2`
 - Framework: Micronaut 5.0.0-SNAPSHOT
 - Java target: 25
-- Preferred local runtime: `sdk use java 25.0.2-graal`
-- GraalPy build tooling: `graalpy-maven-plugin` 25.0.2
+- Preferred local runtime: `sdk use java 25.0.3-graal`
+- GraalPy build tooling: `graalpy-maven-plugin` 25.0.3
 - Micronaut GraalPy integration: `io.micronaut.graal-languages:micronaut-graalpy`
 - Python package: `vaderSentiment==3.3.2`
 - UI shape: one static page with upload, preview, sentiment card, raw JSON, and a clear button
@@ -66,7 +66,7 @@ Keep this repo aligned with the current sample: a very small Micronaut app that 
 # Run Commands
 
 ```bash
-sdk use java 25.0.2-graal
+sdk use java 25.0.3-graal
 ```
 
 ```bash
@@ -84,7 +84,7 @@ The first build needs network access so Maven and GraalPy can resolve dependenci
 Executable jar:
 
 ```bash
-sdk use java 25.0.2-graal
+sdk use java 25.0.3-graal
 ```
 
 ```bash
@@ -113,7 +113,7 @@ See the bundled Python module, embedded GraalPy virtual filesystem, and installe
 Native image:
 
 ```bash
-sdk use java 25.0.2-graal
+sdk use java 25.0.3-graal
 ```
 
 ```bash

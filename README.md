@@ -10,8 +10,8 @@ The sample uses Micronaut's injected `@GraalPyModule` pattern rather than manual
 
 - Micronaut 5.0.0-SNAPSHOT
 - Java 25 bytecode
-- Preferred local runtime: `sdk use java 25.0.2-graal`
-- GraalPy build tooling via `graalpy-maven-plugin` 25.0.2
+- Preferred local runtime: `sdk use java 25.0.3-graal`
+- GraalPy build tooling via `graalpy-maven-plugin` 25.0.3
 - Python dependency pinned to `vaderSentiment==3.3.2`
 - One static page with upload, preview, sentiment card, raw JSON, and a clear button
 
@@ -44,7 +44,7 @@ The sample uses Micronaut's injected `@GraalPyModule` pattern rather than manual
 ## Run Locally
 
 ```bash
-sdk use java 25.0.2-graal
+sdk use java 25.0.3-graal
 ```
 
 ```bash
@@ -62,7 +62,7 @@ The first build needs network access so Maven and GraalPy can resolve dependenci
 ## Executable Jar
 
 ```bash
-sdk use java 25.0.2-graal
+sdk use java 25.0.3-graal
 ```
 
 ```bash
@@ -91,7 +91,7 @@ See the bundled Python module, embedded GraalPy virtual filesystem, and installe
 ## Native Image
 
 ```bash
-sdk use java 25.0.2-graal
+sdk use java 25.0.3-graal
 ```
 
 ```bash
@@ -110,7 +110,7 @@ sdk use java 25.0.2-graal
 ## Main Differences From v1
 
 - `v2` uses `io.micronaut.graal-languages:micronaut-graalpy` and an injected `@GraalPyModule` interface; `v1` uses direct GraalPy embedding with `GraalPyResources` plus explicit `org.graalvm.python:python` and `org.graalvm.python:python-embedding`.
-- `v2` now runs on Micronaut 5.0.0-SNAPSHOT, Java 25 bytecode, `sdk use java 25.0.2-graal`, and GraalPy 25.0.2.
+- `v2` now runs on Micronaut 5.0.0-SNAPSHOT, Java 25 bytecode, `sdk use java 25.0.3-graal`, and GraalPy 25.0.3.
 - `v2` keeps the Python module under `src/main/resources/org.graalvm.python.vfs/src/sentiment_app.py`; `v1` keeps it at `src/main/resources/python/sentiment_app.py`.
 - `v2` calls the Python function through the injected `SentimentModule` and keeps `src/main/resources/META-INF/native-image/proxy-config.json` aligned with that interface; `v1` manually evaluates the script, reads the function from Python bindings, and does not need proxy metadata.
 

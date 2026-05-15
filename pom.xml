@@ -19,7 +19,7 @@
     <release.version>25</release.version>
     <!-- <micronaut-maven-plugin.version>5.0.0-M2</micronaut-maven-plugin.version> -->
     <micronaut.version>5.0.0-SNAPSHOT</micronaut.version>
-    <graalpy.plugin.version>25.0.2</graalpy.plugin.version>
+    <graalpy.plugin.version>25.0.3</graalpy.plugin.version>
     <micronaut.runtime>netty</micronaut.runtime>
     <exec.mainClass>graalpy.demo.Application</exec.mainClass>
   </properties>
@@ -84,9 +84,6 @@
         <artifactId>micronaut-maven-plugin</artifactId>
         <configuration>
           <configFile>aot-${packaging}.properties</configFile>
-          <configurationValidation>
-            <enabled>false</enabled>
-          </configurationValidation>
         </configuration>
       </plugin>
       <plugin>
