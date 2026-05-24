@@ -8,7 +8,7 @@ The sample uses Micronaut's injected `@GraalPyModule` pattern rather than manual
 
 ## Current Sample
 
-- Micronaut 5.0.0-SNAPSHOT
+- Micronaut 5.0.0
 - Java 25 bytecode
 - Preferred local runtime: `sdk use java 25.0.3-graal`
 - GraalPy build tooling via `graalpy-maven-plugin` 25.0.3
@@ -57,7 +57,7 @@ sdk use java 25.0.3-graal
 
 Open `http://localhost:8080`.
 
-The first build needs network access so Maven and GraalPy can resolve dependencies, install the pinned VADER package, and resolve Micronaut 5 snapshot artifacts from the configured snapshot repository.
+The first build needs network access so Maven and GraalPy can resolve dependencies, install the pinned VADER package, and resolve Micronaut 5 artifacts from the configured repository.
 
 ## Executable Jar
 
@@ -110,7 +110,7 @@ sdk use java 25.0.3-graal
 ## Main Differences From v1
 
 - `v2` uses `io.micronaut.graal-languages:micronaut-graalpy` and an injected `@GraalPyModule` interface; `v1` uses direct GraalPy embedding with `GraalPyResources` plus explicit `org.graalvm.python:python` and `org.graalvm.python:python-embedding`.
-- `v2` now runs on Micronaut 5.0.0-SNAPSHOT, Java 25 bytecode, `sdk use java 25.0.3-graal`, and GraalPy 25.0.3.
+- `v2` now runs on Micronaut 5.0.0, Java 25 bytecode, `sdk use java 25.0.3-graal`, and GraalPy 25.0.3.
 - `v2` keeps the Python module under `src/main/resources/org.graalvm.python.vfs/src/sentiment_app.py`; `v1` keeps it at `src/main/resources/python/sentiment_app.py`.
 - `v2` calls the Python function through the injected `SentimentModule` and keeps `src/main/resources/META-INF/native-image/proxy-config.json` aligned with that interface; `v1` manually evaluates the script, reads the function from Python bindings, and does not need proxy metadata.
 

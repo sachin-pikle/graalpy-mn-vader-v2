@@ -6,7 +6,7 @@ Keep this repo aligned with the current sample: a very small Micronaut app that 
 
 - Artifact and app name: `graalpy-mn-vader-v2`
 - Version label: `v2`
-- Framework: Micronaut 5.0.0-SNAPSHOT
+- Framework: Micronaut 5.0.0
 - Java target: 25
 - Preferred local runtime: `sdk use java 25.0.3-graal`
 - GraalPy build tooling: `graalpy-maven-plugin` 25.0.3
@@ -79,7 +79,7 @@ sdk use java 25.0.3-graal
 
 Open `http://localhost:8080`.
 
-The first build needs network access so Maven and GraalPy can resolve dependencies, install the pinned VADER package, and resolve Micronaut 5 snapshot artifacts from the configured snapshot repository.
+The first build needs network access so Maven and GraalPy can resolve dependencies, install the pinned VADER package, and resolve Micronaut 5 artifacts from the configured repository.
 
 Executable jar:
 
