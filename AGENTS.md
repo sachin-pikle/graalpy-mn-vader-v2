@@ -6,7 +6,7 @@ Keep this repo aligned with the current sample: a very small Micronaut app that 
 
 - Artifact and app name: `graalpy-mn-vader-v2`
 - Version label: `v2`
-- Framework: Micronaut 5.0.0
+- Framework: Micronaut 5.2.4
 - Java target: 25
 - Preferred local runtime: `sdk use java 25.0.3-graal`
 - GraalPy build tooling: `graalpy-maven-plugin` 25.0.3
